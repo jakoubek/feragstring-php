@@ -1,0 +1,20 @@
+{
+    "name": "jakoubek/feragstring-php",
+    "description": "A PHP library for creating TSL files (aka 'Ferag-String').",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Jakoubek\\FeragstringPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oliver Jakoubek",
+            "email": "mail@oliverjakoubek.de"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^10.3"
+    }
+}
