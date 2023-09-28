@@ -9,6 +9,8 @@ final class Route
     protected int $routeCode = -1;
     protected int $rampNumber = -1;
     protected int $copiesInRoute = -1;
+    protected int $topsheetMarker = -1;
+    protected int $tslTopsheetTemplateDirectory = -1;
     public array $productionDrops = [];
 
     public function __construct()
@@ -31,7 +33,8 @@ final class Route
 
         $ri = new RouteInfo();
         $ri->setRouteName($this->getRouteName());
-        $ri->setTopsheetMarker(1);
+        $ri->setTopsheetMarker($this->getTopsheetMarker());
+        $ri->setTslTopsheetTemplateDirectory($this->getTslTopsheetTemplateDirectory());
         $info[] = $ri->Message();
 
         // jetzt alle Production Drops
@@ -84,6 +87,26 @@ final class Route
     public function setCopiesInRoute(int $copiesInRoute): void
     {
         $this->copiesInRoute = $copiesInRoute;
+    }
+
+    public function getTopsheetMarker(): int
+    {
+        return $this->topsheetMarker;
+    }
+
+    public function setTopsheetMarker(int $topsheetMarker): void
+    {
+        $this->topsheetMarker = $topsheetMarker;
+    }
+
+    public function getTslTopsheetTemplateDirectory(): int
+    {
+        return $this->tslTopsheetTemplateDirectory;
+    }
+
+    public function setTslTopsheetTemplateDirectory(int $tslTopsheetTemplateDirectory): void
+    {
+        $this->tslTopsheetTemplateDirectory = $tslTopsheetTemplateDirectory;
     }
 
     public function addProductionDrop(ProductionDrop $pd): void
