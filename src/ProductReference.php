@@ -60,6 +60,11 @@ final class ProductReference implements FeragMessage
         return "";
     }
 
+    public function getProductReferenceNumberAsNumber(): int
+    {
+        return $this->productReferenceNumber;
+    }
+
     public function setProductReferenceNumber(int $productReferenceNumber): void
     {
         $this->productReferenceNumber = $productReferenceNumber;
