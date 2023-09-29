@@ -38,6 +38,7 @@ final class Segment
             $this->data = str_pad(strval($data), $this->fixLength, "0", STR_PAD_LEFT);
         } else {
             $this->data = str_pad($data, $this->fixLength, " ", STR_PAD_RIGHT);
+            $this->data = substr($this->data, 0, $this->fixLength);
         }
 
         if ($this->variableLength > 0) {

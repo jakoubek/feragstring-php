@@ -53,7 +53,11 @@ final class ProductReference implements FeragMessage
 
     public function getProductReferenceNumber(): string
     {
-        if ($this->productReferenceNumber != "") {
+        if ($this->productReferenceNumber = -1) {
+            $this->productReferenceNumber = 1;
+        }
+
+        if ($this->productReferenceNumber != -1) {
             return Segment::create(99141, 3)
                 ->setData($this->productReferenceNumber)
                 ->Print();
