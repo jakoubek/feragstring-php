@@ -12,6 +12,7 @@ final class ProductionDrop implements FeragMessage
 
     protected string $agentName = "";
     protected int $numberOfCopies = -1;
+    protected string $topsheetData = "";
 
     public function __construct()
     {
@@ -36,8 +37,9 @@ final class ProductionDrop implements FeragMessage
     public function getAgentName(): string
     {
         if ($this->agentName != "") {
-            $segment = new Segment(12, 10);
-            return $segment->Print($this->agentName);
+            return Segment::create(12, 10)
+                ->setData($this->agentName)
+                ->Print();
         }
         return "";
     }
@@ -50,8 +52,9 @@ final class ProductionDrop implements FeragMessage
     public function getNumberOfCopies(): string
     {
         if ($this->numberOfCopies != -1) {
-            $segment = new Segment(13, 5);
-            return $segment->PrintNumber($this->numberOfCopies);
+            return Segment::create(13, 5)
+                ->setData($this->numberOfCopies)
+                ->Print();
         }
         return "";
     }
@@ -61,6 +64,32 @@ final class ProductionDrop implements FeragMessage
         $this->numberOfCopies = $numberOfCopies;
     }
 
+    public function getTopsheetData(): string
+    {
+        return $this->topsheetData;
+    }
 
+    public function setTopsheetData(string $topsheetData): void
+    {
+        $this->topsheetData = $topsheetData;
+    }
+
+    public function addLineToTopsheetData(string $line): void
+    {
+        mb_internal_encoding('utf-8');
+        if (mb_strlen($line) > 60) {
+            $line = mb_substr($line, 0, 60);
+        }
+        $repeater = 60 - mb_strlen($line);
+        $this->topsheetData .= $line . str_repeat(" ", $repeater);
+    }
+
+    public function hasTopsheetData(): bool
+    {
+        if (strlen($this->topsheetData) > 0) {
+            return true;
+        }
+        return false;
+    }
 
 }

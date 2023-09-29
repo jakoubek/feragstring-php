@@ -33,8 +33,9 @@ final class RouteList implements FeragMessage
 
     public function getRouteName(): string
     {
-        $segment = new Segment(11, 13);
-        return $segment->Print($this->routeName);
+        return Segment::create(11, 13)
+            ->setData($this->routeName)
+            ->Print();
     }
 
     public function setRouteName(string $routeName): void
@@ -45,8 +46,9 @@ final class RouteList implements FeragMessage
     public function getRouteCode(): string
     {
         if ($this->routeCode != -1) {
-            $segment = new Segment(79, 5);
-            return $segment->PrintNumber($this->routeCode);
+            return Segment::create(79, 5)
+                ->setData($this->routeCode)
+                ->Print();
         }
         return "";
     }
@@ -59,8 +61,9 @@ final class RouteList implements FeragMessage
     public function getRampNumber(): string
     {
         if ($this->rampNumber != -1) {
-            $segment = new Segment(25, 2);
-            return $segment->PrintNumber($this->rampNumber);
+            return Segment::create(25, 2)
+                ->setData($this->rampNumber)
+                ->Print();
         }
         return "";
     }
@@ -73,8 +76,9 @@ final class RouteList implements FeragMessage
     public function getCopiesInRoute(): string
     {
         if ($this->copiesInRoute != -1) {
-            $segment = new Segment(23, 6);
-            return $segment->PrintNumber($this->copiesInRoute);
+            return Segment::create(23, 6)
+                ->setData($this->copiesInRoute)
+                ->Print();
         }
         return "";
     }

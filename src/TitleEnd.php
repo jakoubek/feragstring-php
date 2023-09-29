@@ -28,8 +28,9 @@ final class TitleEnd implements FeragMessage
 
     public function getTitleName(): string
     {
-        $segment = new Segment(40, 8);
-        return $segment->Print($this->titleName);
+        return Segment::create(40, 8)
+            ->setData($this->titleName)
+            ->Print();
     }
 
     public function setTitleName(string $titleName): void

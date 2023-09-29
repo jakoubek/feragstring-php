@@ -17,6 +17,7 @@ final class RouteInfo implements FeragMessage
     protected int $n = -1;
     protected int $maxBundle = -1;
     protected int $topsheetMarker = -1;
+    protected string $subscriberAddressDefinition = "";
     protected int $eaAddressDefinition = -1;
     protected int $tslTopsheetTemplateDirectory = -1;
     protected string $editionName = "";
@@ -36,6 +37,7 @@ final class RouteInfo implements FeragMessage
             $this->getN(),
             $this->getMaxBundle(),
             $this->getTopsheetMarker(),
+            $this->getSubscriberAddressDefinition(),
             $this->getTslTopsheetTemplateDirectory(),
             $this->getEditionName(),
             $this->getAdditionalInfo(),
@@ -51,8 +53,9 @@ final class RouteInfo implements FeragMessage
 
     public function getRouteName(): string
     {
-        $segment = new Segment(11, 13);
-        return $segment->Print($this->routeName);
+        return Segment::create(11, 13)
+            ->setData($this->routeName)
+            ->Print();
     }
 
     public function setRouteName(string $routeName): void
@@ -63,8 +66,9 @@ final class RouteInfo implements FeragMessage
     public function getLimit(): string
     {
         if ($this->limit != -1) {
-            $segment = new Segment(30, 4);
-            return $segment->PrintNumber($this->limit);
+            return Segment::create(30, 4)
+                ->setData($this->limit)
+                ->Print();
         }
         return "";
     }
@@ -77,8 +81,9 @@ final class RouteInfo implements FeragMessage
     public function getMaxStack(): string
     {
         if ($this->maxStack != -1) {
-            $segment = new Segment(31, 4);
-            return $segment->PrintNumber($this->maxStack);
+            return Segment::create(31, 4)
+                ->setData($this->maxStack)
+                ->Print();
         }
         return "";
     }
@@ -91,8 +96,9 @@ final class RouteInfo implements FeragMessage
     public function getStd(): string
     {
         if ($this->std != -1) {
-            $segment = new Segment(32, 4);
-            return $segment->PrintNumber($this->std);
+            return Segment::create(32, 4)
+                ->setData($this->std)
+                ->Print();
         }
         return "";
     }
@@ -105,8 +111,9 @@ final class RouteInfo implements FeragMessage
     public function getN(): string
     {
         if ($this->n != -1) {
-            $segment = new Segment(33, 4);
-            return $segment->PrintNumber($this->n);
+            return Segment::create(33, 4)
+                ->setData($this->n)
+                ->Print();
         }
         return "";
     }
@@ -119,8 +126,9 @@ final class RouteInfo implements FeragMessage
     public function getMaxBundle(): string
     {
         if ($this->maxBundle != -1) {
-            $segment = new Segment(34, 4);
-            return $segment->PrintNumber($this->maxBundle);
+            return Segment::create(34, 4)
+                ->setData($this->maxBundle)
+                ->Print();
         }
         return "";
     }
@@ -132,8 +140,9 @@ final class RouteInfo implements FeragMessage
 
     public function getTopsheetMarker(): string
     {
-        $segment = new Segment(59, 1);
-        return $segment->Print($this->topsheetMarker);
+        return Segment::create(59, 1)
+            ->setData($this->topsheetMarker)
+            ->Print();
     }
 
     public function setTopsheetMarker(int $topsheetMarker): void
@@ -141,11 +150,27 @@ final class RouteInfo implements FeragMessage
         $this->topsheetMarker = $topsheetMarker;
     }
 
+    public function getSubscriberAddressDefinition(): string
+    {
+        if ($this->subscriberAddressDefinition != "") {
+            return Segment::create(91, 6)
+                ->setData($this->subscriberAddressDefinition)
+                ->Print();
+        }
+        return "";
+    }
+
+    public function setSubscriberAddressDefinition(string $subscriberAddressDefinition): void
+    {
+        $this->subscriberAddressDefinition = $subscriberAddressDefinition;
+    }
+
     public function getEaAddressDefinition(): string
     {
         if ($this->eaAddressDefinition != -1) {
-            $segment = new Segment(91, 6);
-            return $segment->PrintNumber($this->eaAddressDefinition);
+            return Segment::create(91, 6)
+                ->setData($this->eaAddressDefinition)
+                ->Print();
         }
         return "";
     }
@@ -158,8 +183,9 @@ final class RouteInfo implements FeragMessage
     public function getTslTopsheetTemplateDirectory(): string
     {
         if ($this->tslTopsheetTemplateDirectory != -1) {
-            $segment = new Segment(56, 3);
-            return $segment->PrintNumber($this->tslTopsheetTemplateDirectory);
+            return Segment::create(56, 3)
+                ->setData($this->tslTopsheetTemplateDirectory)
+                ->Print();
         }
         return "";
     }
@@ -172,8 +198,9 @@ final class RouteInfo implements FeragMessage
     public function getEditionName(): string
     {
         if ($this->editionName != "") {
-            $segment = new Segment(20, 30);
-            return $segment->Print($this->editionName);
+            return Segment::create(20, 30)
+                ->setData($this->editionName)
+                ->Print();
         }
         return "";
     }

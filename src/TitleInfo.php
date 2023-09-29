@@ -5,6 +5,7 @@ namespace Jakoubek\FeragstringPhp;
 final class TitleInfo implements FeragMessage
 {
 
+    use BundleParameter;
     use AdditionalInfo;
 
     protected Message $message;
@@ -31,6 +32,7 @@ final class TitleInfo implements FeragMessage
             $this->getIssueReference(),
             $this->getCountryCode(),
             $this->getPrintObjectColor(),
+            $this->getBundleParameter(),
             $this->getAdditionalInfo(),
         ];
     }
@@ -56,8 +58,9 @@ final class TitleInfo implements FeragMessage
 
     public function getTitleName(): string
     {
-        $segment = new Segment(40, 8);
-        return $segment->Print($this->titleName);
+        return Segment::create(40, 8)
+            ->setData($this->titleName)
+            ->Print();
     }
 
     public function setTitleName(string $titleName): void
@@ -68,8 +71,9 @@ final class TitleInfo implements FeragMessage
     public function getPublicationDate(): string
     {
         if ($this->publicationDate != "") {
-            $segment = new Segment(95, 6);
-            return $segment->Print($this->publicationDate);
+            return Segment::create(95, 6)
+                ->setData($this->publicationDate)
+                ->Print();
         }
         return "";
     }
@@ -82,8 +86,9 @@ final class TitleInfo implements FeragMessage
     public function getIssueReference(): string
     {
         if ($this->issueReference != "") {
-            $segment = new Segment(99195, 8);
-            return $segment->Print($this->issueReference);
+            return Segment::create(99195, 8)
+                ->setData($this->issueReference)
+                ->Print();
         }
         return "";
     }
@@ -96,8 +101,9 @@ final class TitleInfo implements FeragMessage
     public function getProductionDate(): string
     {
         if ($this->productionDate != "") {
-            $segment = new Segment(98, 6);
-            return $segment->Print($this->productionDate);
+            return Segment::create(98, 6)
+                ->setData($this->productionDate)
+                ->Print();
         }
         return "";
     }
@@ -110,8 +116,9 @@ final class TitleInfo implements FeragMessage
     public function getCountryCode(): string
     {
         if ($this->countryCode != "") {
-            $segment = new Segment(97, 2);
-            return $segment->Print($this->countryCode);
+            return Segment::create(97, 2)
+                ->setData($this->countryCode)
+                ->Print();
         }
         return "";
     }
@@ -124,8 +131,11 @@ final class TitleInfo implements FeragMessage
     public function getPrintObjectColor(): string
     {
         if ($this->printObjectColor != -1) {
-            $segment = new Segment(94, 8);
-            return $segment->PrintNumber($this->printObjectColor);
+            return Segment::create(94, 8)
+                ->setData($this->printObjectColor)
+                ->Print();
+            //$segment = new Segment(94, 8);
+            //return $segment->PrintNumber($this->printObjectColor);
         }
         return "";
     }

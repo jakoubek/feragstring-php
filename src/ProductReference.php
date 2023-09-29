@@ -54,8 +54,9 @@ final class ProductReference implements FeragMessage
     public function getProductReferenceNumber(): string
     {
         if ($this->productReferenceNumber != "") {
-            $segment = new Segment(99141, 3);
-            return $segment->PrintNumber($this->productReferenceNumber);
+            return Segment::create(99141, 3)
+                ->setData($this->productReferenceNumber)
+                ->Print();
         }
         return "";
     }
@@ -73,8 +74,9 @@ final class ProductReference implements FeragMessage
     public function getProductName(): string
     {
         if ($this->productName != "") {
-            $segment = new Segment(42, 30);
-            return $segment->Print($this->productName);
+            return Segment::create(42, 30)
+                ->setData($this->productName)
+                ->Print();
         }
         return "";
     }
@@ -87,8 +89,9 @@ final class ProductReference implements FeragMessage
     public function getProductUsageType(): string
     {
         if ($this->productUsageType != -1) {
-            $segment = new Segment(55, 2);
-            return $segment->PrintNumber($this->productUsageType);
+            return Segment::create(55, 2)
+                ->setData($this->productUsageType)
+                ->Print();
         }
         return "";
     }
@@ -101,8 +104,9 @@ final class ProductReference implements FeragMessage
     public function getSheetLayers(): string
     {
         if ($this->sheetLayers != -1) {
-            $segment = new Segment(35, 4);
-            return $segment->PrintNumber($this->sheetLayers);
+            return Segment::create(35, 4)
+                ->setData($this->sheetLayers)
+                ->Print();
         }
         return "";
     }
@@ -115,8 +119,9 @@ final class ProductReference implements FeragMessage
     public function getCopiesAssigned(): string
     {
         if ($this->copiesAssigned != -1) {
-            $segment = new Segment(02, 8);
-            return $segment->PrintNumber($this->copiesAssigned);
+            return Segment::create(02, 8)
+                ->setData($this->copiesAssigned)
+                ->Print();
         }
         return "";
     }
@@ -129,8 +134,9 @@ final class ProductReference implements FeragMessage
     public function getProductWeight(): string
     {
         if ($this->productWeight != -1) {
-            $segment = new Segment(36, 5);
-            return $segment->PrintNumber($this->productWeight);
+            return Segment::create(36, 5)
+                ->setData($this->productWeight)
+                ->Print();
         }
         return "";
     }
@@ -143,8 +149,9 @@ final class ProductReference implements FeragMessage
     public function getSupervision(): string
     {
         if ($this->supervision != -1) {
-            $segment = new Segment(44, 2);
-            return $segment->PrintNumber($this->supervision);
+            return Segment::create(44, 2)
+                ->setData($this->supervision)
+                ->Print();
         }
         return "";
     }
@@ -157,8 +164,9 @@ final class ProductReference implements FeragMessage
     public function getOverlap(): string
     {
         if ($this->overlap != -1) {
-            $segment = new Segment(45, 2);
-            return $segment->PrintNumber($this->overlap);
+            return Segment::create(45, 2)
+                ->setData($this->overlap)
+                ->Print();
         }
         return "";
     }
@@ -171,8 +179,9 @@ final class ProductReference implements FeragMessage
     public function getFeedingMode(): string
     {
         if ($this->feedingMode != -1) {
-            $segment = new Segment(99101, 2);
-            return $segment->PrintNumber($this->feedingMode);
+            return Segment::create(99101, 2)
+                ->setData($this->feedingMode)
+                ->Print();
         }
         return "";
     }
@@ -185,8 +194,9 @@ final class ProductReference implements FeragMessage
     public function getScatter(): string
     {
         if ($this->scatter != -1) {
-            $segment = new Segment(99102, 6);
-            return $segment->PrintNumber($this->scatter);
+            return Segment::create(99102, 6)
+                ->setData($this->scatter)
+                ->Print();
         }
         return "";
     }
@@ -199,8 +209,9 @@ final class ProductReference implements FeragMessage
     public function getMissingRate(): string
     {
         if ($this->missingRate != -1) {
-            $segment = new Segment(99105, 12);
-            return $segment->PrintNumber($this->missingRate);
+            return Segment::create(99105, 12)
+                ->setData($this->missingRate)
+                ->Print();
         }
         return "";
     }
@@ -213,8 +224,9 @@ final class ProductReference implements FeragMessage
     public function getIssueReference(): string
     {
         if ($this->issueReference != "") {
-            $segment = new Segment(99195, 8);
-            return $segment->Print($this->issueReference);
+            return Segment::create(99195, 8)
+                ->setData($this->issueReference)
+                ->Print();
         }
         return "";
     }

@@ -2,8 +2,6 @@
 
 namespace Jakoubek\FeragstringPhp;
 
-use Jakoubek\FeragstringPhp\Segment;
-
 trait AdditionalInfo
 {
     protected string $additionalInfo = "";

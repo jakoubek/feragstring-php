@@ -11,21 +11,17 @@ class FeragstringTest extends TestCase
     function testItCreates()
     {
         $fs = new Feragstring();
-        $fs->SetTitleName("DEMO2009");
+        $fs->SetTitleName("BASSE36");
 
-        $fs->titleInfo->setPrintObjectName("EDITION1A");
-        $fs->titleInfo->setPublicationDate("2023-09-09");
-        $fs->titleInfo->setIssueReference("20191005");
-        $fs->titleInfo->setCountryCode("13");
-        $fs->titleInfo->setPrintObjectColor("00000000");
+        $fs->titleInfo->setPublicationDate("230909");
+        $fs->titleInfo->setPrintObjectColor(0);
 
-
-        $expected = "%2440+93EDITION1A+40DEMO2009!
-%2441+40DEMO2009!
+        $expected = "%2440+40BASSE36 +95230909+9400000000!
+%2441+40BASSE36 !
 ";
-        $this->assertEquals($expected, $fs->PrintOut());
+        $this->assertSame($expected, $fs->PrintOut());
 
-        print $fs->PrintOut();
+//        print $fs->PrintOut();
 
     }
 

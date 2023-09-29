@@ -27,8 +27,9 @@ final class RouteEnd implements FeragMessage
 
     public function getRouteName(): string
     {
-        $segment = new Segment(11, 13);
-        return $segment->Print($this->routeName);
+        return Segment::create(11, 13)
+            ->setData($this->routeName)
+            ->Print();
     }
 
     public function setRouteName(string $routeName): void

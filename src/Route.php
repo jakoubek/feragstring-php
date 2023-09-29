@@ -10,6 +10,7 @@ final class Route
     protected int $rampNumber = -1;
     protected int $copiesInRoute = -1;
     protected int $topsheetMarker = -1;
+    protected string $subscriberAddressDefinition = "";
     protected int $tslTopsheetTemplateDirectory = -1;
     public array $productionDrops = [];
 
@@ -34,12 +35,19 @@ final class Route
         $ri = new RouteInfo();
         $ri->setRouteName($this->getRouteName());
         $ri->setTopsheetMarker($this->getTopsheetMarker());
+        $ri->setSubscriberAddressDefinition($this->getSubscriberAddressDefinition());
         $ri->setTslTopsheetTemplateDirectory($this->getTslTopsheetTemplateDirectory());
         $info[] = $ri->Message();
 
         // jetzt alle Production Drops
         foreach ($this->productionDrops as $pd) {
             $info[] = $pd->Message();
+            // falls Production Drop Topsheet Data hat
+            if ($pd->hasTopsheetData()) {
+                $tsd = new TopsheetDataTSL();
+                $tsd->setRestStdData($pd->getTopsheetData());
+                $info[] = $tsd->Message();
+            }
         }
 
         $re = new RouteEnd();
@@ -97,6 +105,16 @@ final class Route
     public function setTopsheetMarker(int $topsheetMarker): void
     {
         $this->topsheetMarker = $topsheetMarker;
+    }
+
+    public function getSubscriberAddressDefinition(): string
+    {
+        return $this->subscriberAddressDefinition;
+    }
+
+    public function setSubscriberAddressDefinition(string $subscriberAddressDefinition): void
+    {
+        $this->subscriberAddressDefinition = $subscriberAddressDefinition;
     }
 
     public function getTslTopsheetTemplateDirectory(): int

@@ -12,8 +12,9 @@ trait ProductReferenceNumbers
         if (count($this->productReferenceNumbers) > 0) {
             $refNumbers = "";
             foreach ($this->productReferenceNumbers as $productReferenceNumber) {
-                $segment = new Segment(99141, 3);
-                $refNumbers .= $segment->PrintNumber($productReferenceNumber);
+                $seg = Segment::create(99141, 3)
+                    ->setData($productReferenceNumber);
+                $refNumbers .= $seg->Print();
             }
             return $refNumbers;
         }
