@@ -34,6 +34,7 @@ final class RouteList implements FeragMessage
     public function getRouteName(): string
     {
         return Segment::create(11, 13)
+            ->IsNumeric(false)
             ->setData($this->routeName)
             ->Print();
     }

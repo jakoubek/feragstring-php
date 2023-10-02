@@ -8,6 +8,7 @@ final class Segment
     protected int $segmentNumber;
     protected int $fixLength;
     protected int $variableLength;
+    protected bool $isNumeric = true;
     protected mixed $data;
     protected string $segmentHeader;
     protected int $lengthSpecification = 0;
@@ -31,18 +32,32 @@ final class Segment
         return new self($segmentNumber, $fixLength, $variableLength);
     }
 
+    public function IsNumeric(bool $isNumeric = true): Segment
+    {
+        $this->isNumeric = $isNumeric;
+        return $this;
+    }
+
     public function setData(mixed $data): Segment
     {
-        mb_internal_encoding('utf-8');
-        if (is_numeric($data)) {
+        //mb_internal_encoding('Windows-1252');
+        if (is_numeric($data) && $this->isNumeric) {
             $this->data = str_pad(strval($data), $this->fixLength, "0", STR_PAD_LEFT);
         } else {
-            $this->data = str_pad($data, $this->fixLength, " ", STR_PAD_RIGHT);
-            $this->data = substr($this->data, 0, $this->fixLength);
+            if ($this->fixLength > 0) {
+                $repeater = $this->fixLength - mb_strlen($data);
+                /*if ($this->segmentNumber == 42) {
+                    print "data: " . $data . " - repeater: " . $repeater . "\n";
+                }*/
+                $this->data = $data . str_repeat(" ", $repeater);
+                $this->data = mb_substr($this->data, 0, $this->fixLength);
+            } elseif ($this->variableLength > 0) {
+                $this->data = $data;
+            }
         }
 
         if ($this->variableLength > 0) {
-            $this->lengthSpecification = mb_strlen($this->data, "utf-8") + 4;
+            $this->lengthSpecification = mb_strlen($this->data, 'utf8') + 4;
             $this->segmentHeader = $this->segmentHeader . str_pad(strval($this->lengthSpecification), 4, "0", STR_PAD_LEFT);
         }
 
