@@ -12,6 +12,7 @@ final class Route
     protected int $topsheetMarker = -1;
     protected string $subscriberAddressDefinition = "";
     protected int $tslTopsheetTemplateDirectory = -1;
+    protected string $editionName = "";
     public array $productionDrops = [];
 
     public function __construct()
@@ -37,6 +38,7 @@ final class Route
         $ri->setTopsheetMarker($this->getTopsheetMarker());
         $ri->setSubscriberAddressDefinition($this->getSubscriberAddressDefinition());
         $ri->setTslTopsheetTemplateDirectory($this->getTslTopsheetTemplateDirectory());
+        $ri->setEditionName($this->getEditionName());
         $info[] = $ri->Message();
 
         // jetzt alle Production Drops
@@ -125,6 +127,16 @@ final class Route
     public function setTslTopsheetTemplateDirectory(int $tslTopsheetTemplateDirectory): void
     {
         $this->tslTopsheetTemplateDirectory = $tslTopsheetTemplateDirectory;
+    }
+
+    public function getEditionName(): string
+    {
+        return $this->editionName;
+    }
+
+    public function setEditionName(string $editionName): void
+    {
+        $this->editionName = $editionName;
     }
 
     public function addProductionDrop(ProductionDrop $pd): void
