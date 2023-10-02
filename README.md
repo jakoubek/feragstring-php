@@ -19,3 +19,30 @@ $fs->titleInfo->setPrintObjectName("EDITION1A");
 // get the FERAG string (the write it to a file...) 
 $fileContent = $fs->PrintOut();
 ```
+
+## Supported messages
+
+- Title Info (%2440)
+- Product Reference (%2450)
+- Route List Entry (%2401)
+- Route Info (%2402)
+- Production Drop (%2403)
+- Topsheet Data for TSL (%2414)
+- Route End (%2406)
+- Title End (%2441)
+
+## Installation
+
+Installation gets done with Composer:
+
+```bash
+composer require jakoubek/feragstring-php
+``` 
+
+## Need commercial support?
+
+I offer commercial support for newspaper companies who want to setup their own FERAG string/TSL file generation.
+
+See https://www.jakoubek.net/ferag-string-erzeugen (German) or write an email to <a href="mailto:info@jakoubek.net">info@jakoubek.net</a>.
+
+
