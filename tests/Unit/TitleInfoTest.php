@@ -5,7 +5,7 @@
  * Time: 20:09
  */
 
-use Jakoubek\FeragstringPhp\TitleInfo;
+use Jakoubek\Feragstring\TitleInfo;
 
 test('Title name padded', function () {
 

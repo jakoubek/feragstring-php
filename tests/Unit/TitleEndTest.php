@@ -5,7 +5,7 @@
  * Time: 20:20
  */
 
-use Jakoubek\FeragstringPhp\TitleEnd;
+use Jakoubek\Feragstring\TitleEnd;
 
 test('Title end name', function () {
 

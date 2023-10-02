@@ -5,7 +5,7 @@
  * Time: 20:25
  */
 
-use Jakoubek\FeragstringPhp\ProductReference;
+use Jakoubek\Feragstring\ProductReference;
 
 test('Product reference default product number', function () {
 

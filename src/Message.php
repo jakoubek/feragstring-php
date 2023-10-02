@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Jakoubek\FeragstringPhp;
+namespace Jakoubek\Feragstring;
 
 final class Message
 {

@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Jakoubek\FeragstringPhp\Feragstring;
+use Jakoubek\Feragstring\Feragstring;
 use PHPUnit\Framework\TestCase;
 
 class FeragstringTest extends TestCase
