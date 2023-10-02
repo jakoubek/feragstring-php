@@ -10,6 +10,7 @@ trait BundleParameter
     protected int $std = -1;
     protected int $n = -1;
     protected int $maxBundle = -1;
+    protected int $sz = 0;
 
     public function getBundleParameter(): string
     {
@@ -17,7 +18,8 @@ trait BundleParameter
             $this->getMaxStack() .
             $this->getStd() .
             $this->getN() .
-            $this->getMaxBundle();
+            $this->getMaxBundle() .
+            $this->getSz();
         return $allParameters;
     }
 
@@ -96,6 +98,20 @@ trait BundleParameter
         $this->maxBundle = $maxBundle;
     }
 
+    public function getSz(): string
+    {
+        if ($this->sz != -1) {
+            return Segment::create(35, 4)
+                ->setData($this->sz)
+                ->Print();
+        }
+        return "";
+    }
+
+    public function setSz(int $sz): void
+    {
+        $this->sz = $sz;
+    }
 
 
 }
