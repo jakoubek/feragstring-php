@@ -15,7 +15,7 @@ final class TitleInfo implements FeragMessage
     protected string $issueReference = "";
     protected string $productionDate = "";
     protected string $countryCode = "";
-    protected int $printObjectColor = -1;
+    protected string $printObjectColor = "";
 
     public function __construct()
     {
@@ -130,7 +130,7 @@ final class TitleInfo implements FeragMessage
 
     public function getPrintObjectColor(): string
     {
-        if ($this->printObjectColor != -1) {
+        if ($this->printObjectColor != "") {
             return Segment::create(94, 8)
                 ->setData($this->printObjectColor)
                 ->Print();
@@ -140,7 +140,7 @@ final class TitleInfo implements FeragMessage
         return "";
     }
 
-    public function setPrintObjectColor(int $printObjectColor): void
+    public function setPrintObjectColor(string $printObjectColor): void
     {
         $this->printObjectColor = $printObjectColor;
     }
