@@ -74,13 +74,14 @@ final class ProductionDrop implements FeragMessage
         $this->topsheetData = $topsheetData;
     }
 
-    public function addLineToTopsheetData(string $line): void
+    public function addLineToTopsheetData(mixed $line, int $lineLength = 60): void
     {
-        mb_internal_encoding('utf-8');
-        if (mb_strlen($line) > 60) {
-            $line = mb_substr($line, 0, 60);
+        mb_internal_encoding('utf8');
+        $line = strval($line);
+        if (mb_strlen($line) > $lineLength) {
+            $line = mb_substr($line, 0, $lineLength);
         }
-        $repeater = 60 - mb_strlen($line);
+        $repeater = $lineLength - mb_strlen($line);
         $this->topsheetData .= $line . str_repeat(" ", $repeater);
     }
 
