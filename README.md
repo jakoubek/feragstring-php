@@ -41,7 +41,7 @@ composer require jakoubek/feragstring-php
 
 ## Need commercial support?
 
-I offer commercial support for newspaper companies who want to setup their own FERAG string/TSL file generation.
+I offer commercial support for newspaper companies or printing plants who want to set up their own FERAG string/TSL file generation.
 
 See https://www.jakoubek.net/ferag-string-erzeugen (German) or write an email to <a href="mailto:info@jakoubek.net">info@jakoubek.net</a>.
 
