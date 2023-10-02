@@ -5,6 +5,7 @@ namespace Jakoubek\FeragstringPhp;
 trait BundleParameter
 {
 
+    public bool $enabled = false;
     protected int $limit = -1;
     protected int $maxStack = -1;
     protected int $std = -1;
@@ -14,12 +15,15 @@ trait BundleParameter
 
     public function getBundleParameter(): string
     {
-        $allParameters = $this->getLimit() .
-            $this->getMaxStack() .
-            $this->getStd() .
-            $this->getN() .
-            $this->getMaxBundle() .
-            $this->getSz();
+        $allParameters = "";
+        if ($this->enabled) {
+            $allParameters = $this->getLimit() .
+                $this->getMaxStack() .
+                $this->getStd() .
+                $this->getN() .
+                $this->getMaxBundle() .
+                $this->getSz();
+        }
         return $allParameters;
     }
 
