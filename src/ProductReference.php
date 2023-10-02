@@ -53,7 +53,7 @@ final class ProductReference implements FeragMessage
 
     public function getProductReferenceNumber(): string
     {
-        if ($this->productReferenceNumber = -1) {
+        if ($this->productReferenceNumber == -1) {
             $this->productReferenceNumber = 1;
         }
 
